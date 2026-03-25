@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Hüsrev Sayın — AI/ML Developer</title>
+<meta name="description" content="Software Engineering student, AI/ML Developer, Cybersecurity enthusiast. Building multi-agent systems, OSINT tools, and security platforms.">
+<link rel="canonical" href="https://sayinahmet.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0b;
+  --bg-card:#111113;
+  --bg-card-hover:#161618;
+  --border:#1e1e22;
+  --border-hover:#2a2a30;
+  --text:#e4e4e7;
+  --text-dim:#71717a;
+  --text-dimmer:#3f3f46;
+  --accent:#22d3ee;
+  --accent-dim:rgba(34,211,238,.08);
+  --accent-glow:rgba(34,211,238,.15);
+  --green:#34d399;
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Outfit',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* --- NOISE OVERLAY --- */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:256px 256px;opacity:.4;
+}
+
+/* --- LAYOUT --- */
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+
+/* --- NAV --- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  background:rgba(10,10,11,.8);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.nav-logo{
+  font-family:var(--mono);font-weight:700;font-size:.9rem;
+  color:var(--accent);text-decoration:none;letter-spacing:-.02em;
+}
+.nav-logo span{color:var(--text-dim)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:.82rem;font-weight:500;color:var(--text-dim);
+  text-decoration:none;letter-spacing:.02em;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text-dim);cursor:pointer}
+
+/* --- HERO --- */
+.hero{
+  padding:160px 0 100px;
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;top:80px;right:-200px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);
+  pointer-events:none;opacity:.4;
+}
+.hero-label{
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
+  color:var(--accent);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+}
+.hero-label::before{
+  content:'';width:24px;height:1px;background:var(--accent);
+}
+.hero h1{
+  font-size:clamp(2.2rem,5vw,3.4rem);
+  font-weight:700;line-height:1.1;letter-spacing:-.03em;
+  margin-bottom:20px;
+}
+.hero h1 .dim{color:var(--text-dim)}
+.hero-desc{
+  font-size:1.05rem;color:var(--text-dim);
+  max-width:520px;line-height:1.7;font-weight:300;
+}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-links{
+  margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;
+}
+.hero-links a{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.78rem;font-weight:500;
+  padding:10px 20px;border-radius:6px;text-decoration:none;
+  transition:all .25s;
+}
+.btn-primary{
+  background:var(--accent);color:var(--bg);
+}
+.btn-primary:hover{box-shadow:0 0 20px var(--accent-glow);transform:translateY(-1px)}
+.btn-ghost{
+  border:1px solid var(--border);color:var(--text-dim);
+}
+.btn-ghost:hover{border-color:var(--border-hover);color:var(--text)}
+
+/* --- SECTIONS --- */
+section{padding:80px 0}
+.section-label{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:12px;display:flex;align-items:center;gap:10px;
+}
+.section-label::before{
+  content:'';width:16px;height:1px;background:var(--accent);
+}
+.section-title{
+  font-size:1.6rem;font-weight:600;letter-spacing:-.02em;
+  margin-bottom:48px;
+}
+
+/* --- PROJECTS --- */
+.projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.project-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:10px;padding:28px;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.project-card:hover{
+  border-color:var(--border-hover);
+  background:var(--bg-card-hover);
+  transform:translateY(-2px);
+}
+.project-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent-glow),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.project-card:hover::before{opacity:1}
+.project-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.project-name{
+  font-size:1.05rem;font-weight:600;letter-spacing:-.01em;
+}
+.project-badge{
+  font-family:var(--mono);font-size:.65rem;font-weight:500;
+  padding:4px 10px;border-radius:20px;white-space:nowrap;
+  background:var(--accent-dim);color:var(--accent);
+}
+.project-badge.private{background:rgba(113,113,122,.1);color:var(--text-dim)}
+.project-desc{
+  font-size:.88rem;color:var(--text-dim);line-height:1.6;
+  margin-bottom:16px;font-weight:300;
+}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.project-tech span{
+  font-family:var(--mono);font-size:.68rem;font-weight:500;
+  padding:4px 10px;border-radius:4px;
+  background:rgba(255,255,255,.04);color:var(--text-dim);
+}
+.project-link{
+  font-family:var(--mono);font-size:.75rem;font-weight:500;
+  color:var(--accent);text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.project-link:hover{gap:10px}
+.project-link svg{width:14px;height:14px}
+
+/* --- SKILLS --- */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.skill-group{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:10px;padding:24px;
+}
+.skill-group-title{
+  font-family:var(--mono);font-size:.7rem;font-weight:700;
+  color:var(--accent);letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.skill-group ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.skill-group li{
+  font-size:.85rem;color:var(--text-dim);font-weight:400;
+  display:flex;align-items:center;gap:8px;
+}
+.skill-group li::before{
+  content:'';width:4px;height:4px;border-radius:50%;
+  background:var(--text-dimmer);flex-shrink:0;
+}
+
+/* --- CONTACT --- */
+.contact-box{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:10px;padding:40px;text-align:center;
+}
+.contact-box p{
+  font-size:.95rem;color:var(--text-dim);margin-bottom:24px;font-weight:300;
+}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-links a{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.78rem;font-weight:500;
+  padding:10px 20px;border-radius:6px;text-decoration:none;
+  border:1px solid var(--border);color:var(--text-dim);
+  transition:all .25s;
+}
+.contact-links a:hover{border-color:var(--border-hover);color:var(--text)}
+
+/* --- FOOTER --- */
+footer{
+  padding:32px 0;border-top:1px solid var(--border);
+  text-align:center;
+}
+footer p{
+  font-family:var(--mono);font-size:.7rem;color:var(--text-dimmer);
+}
+
+/* --- ANIMATIONS --- */
+.fade-in{opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.22,1,.36,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in:nth-child(2){transition-delay:.06s}
+.fade-in:nth-child(3){transition-delay:.12s}
+.fade-in:nth-child(4){transition-delay:.18s}
+.fade-in:nth-child(5){transition-delay:.24s}
+
+/* --- RESPONSIVE --- */
+@media(max-width:640px){
+  .nav-links{
+    display:none;position:fixed;top:56px;left:0;right:0;
+    background:rgba(10,10,11,.95);backdrop-filter:blur(12px);
+    flex-direction:column;padding:24px;gap:20px;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
+  .hero{padding:120px 0 60px}
+  section{padding:60px 0}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .project-card{padding:22px}
+  .contact-box{padding:28px}
+}
+@media(max-width:380px){
+  .skills-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">ahmed<span>.sayin</span></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-label">Software Engineer & AI Developer</div>
+    <h1>Ahmed Hüsrev <span class="dim">Sayın</span></h1>
+    <p class="hero-desc">
+      Software Engineering student at <strong>Fırat University</strong>.
+      Building <strong>multi-agent systems</strong>, <strong>OSINT tools</strong>,
+      and <strong>security platforms</strong> with Python, FastAPI, and cloud infrastructure.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/ahmetsn702" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:ahmedsn198@gmail.com" class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="project-head">
+          <span class="project-name">MAOS</span>
+          <span class="project-badge">Public</span>
+        </div>
+        <p class="project-desc">Multi-Agent Orchestration System — 17 AI agents coordinated through a ReAct decision loop. Handles planning, research, code generation, and self-critique autonomously.</p>
+        <div class="project-tech">
+          <span>Python</span><span>FastAPI</span><span>ChromaDB</span><span>Google Cloud</span><span>Vertex AI</span>
+        </div>
+        <a href="https://github.com/ahmetsn702/multi-agent-system" target="_blank" rel="noopener" class="project-link">
+          View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-head">
+          <span class="project-name">Footprint</span>
+          <span class="project-badge private">Private</span>
+        </div>
+        <p class="project-desc">OSINT investigation tool for multi-platform social media intelligence. Aggregates and cross-references data across Instagram, X, LinkedIn, and Facebook.</p>
+        <div class="project-tech">
+          <span>Python</span><span>FastAPI</span><span>Playwright</span><span>React</span>
+        </div>
+        <span class="project-link" style="opacity:.5;cursor:default">Private repository</span>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-head">
+          <span class="project-name">CyberMentor AI</span>
+          <span class="project-badge">Public</span>
+        </div>
+        <p class="project-desc">AI-powered cybersecurity mentor and CTF assistant. Uses Socratic method to guide learners through challenges without giving away answers directly.</p>
+        <div class="project-tech">
+          <span>Flutter</span><span>Supabase</span><span>Claude API</span><span>Dart</span>
+        </div>
+        <a href="https://github.com/ahmetsn702/CyberMentor-AI" target="_blank" rel="noopener" class="project-link">
+          View on GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-head">
+          <span class="project-name">ExifRiskAuditor</span>
+          <span class="project-badge private">Private</span>
+        </div>
+        <p class="project-desc">Privacy risk analyzer that extracts EXIF metadata from images and classifies street-level exposure using AI-based visual analysis.</p>
+        <div class="project-tech">
+          <span>C#</span><span>.NET</span><span>Python</span><span>Computer Vision</span>
+        </div>
+        <span class="project-link" style="opacity:.5;cursor:default">Private repository</span>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-head">
+          <span class="project-name">IDS Automation Platform</span>
+          <span class="project-badge private">Private</span>
+        </div>
+        <p class="project-desc">Remote Suricata IDS management over SSH. Integrates Nmap scanning, PCAP analysis, and Purple Team operations in a unified interface.</p>
+        <div class="project-tech">
+          <span>Python</span><span>Suricata</span><span>Nmap</span><span>SSH</span>
+        </div>
+        <span class="project-link" style="opacity:.5;cursor:default">Available upon request</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Languages</div>
+        <ul>
+          <li>Python</li>
+          <li>JavaScript</li>
+          <li>Dart / Flutter</li>
+          <li>C#</li>
+          <li>Java</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Frameworks</div>
+        <ul>
+          <li>FastAPI</li>
+          <li>Flutter</li>
+          <li>.NET</li>
+          <li>React</li>
+          <li>Supabase</li>
+        </ul>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">AI / ML</div>
+        <ul>
+          <li>Multi-Agent Systems</li>
+          <li>LLM Integration</li>
+          <li>Prompt Engineering</li>
+          <li>ChromaDB / RAG</li>
+          <li>Computer Vision</li>
+        </ul>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">Security</div>
+        <ul>
+          <li>OSINT</li>
+          <li>Web Scraping</li>
+          <li>IDS / Suricata</li>
+          <li>CTF / Pentesting</li>
+          <li>PCAP Analysis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-box fade-in">
+      <p>Open to collaborations, freelance work, and remote opportunities.</p>
+      <div class="contact-links">
+        <a href="mailto:ahmedsn198@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          ahmedsn198@gmail.com
+        </a>
+        <a href="https://github.com/ahmetsn702" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          ahmetsn702
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 Ahmed Hüsrev Sayın</p>
+  </div>
+</footer>
+
+<script>
+function closeMenu(){document.querySelector('.nav-links').classList.remove('open')}
+
+// Scroll fade-in
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
